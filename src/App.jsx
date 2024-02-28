@@ -1,13 +1,11 @@
-import Post from './components/Post';
+import PostsList from './components/PostsList.jsx'
 
 function App() {
   return (
-    <div>
-      <Post author='test author' />
-      <Post author='havana' />
-      <Post author='author 1' />
-    </div>
+    <main>
+      <PostsList />
+    </main>
   );
-}
+} 
 
 export default App;
