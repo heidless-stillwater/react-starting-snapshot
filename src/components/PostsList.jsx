@@ -7,16 +7,23 @@ import Modal from './Modal.jsx'
 import classes from './PostsList.module.css'
 
 function PostsList({ isPosting, onStopPosting }) {
+    const [posts, setPosts] = useState([]);
+
+    function addPostHandler(postData) {
+        setPosts((existingPosts) => [postData, ...existingPosts]);
+    }
+
     return (
         <>
             {isPosting && (
                 <Modal onClose={onStopPosting}>
-                    <NewPost onCancel={onStopPosting} />
+                    <NewPost onCancel={onStopPosting} onAddPost={addPostHandler}/>
                 </Modal> 
             )}
 
             <ul className={classes.posts}>       
-                <Post author='Max' body='test body' />
+                {/* {posts.map((post) => <Post author={post.author} body={post.body} />)} */}
+                {posts.map((post) => <Post />)}
             </ul>
         </>
     );
