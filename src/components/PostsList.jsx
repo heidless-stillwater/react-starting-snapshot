@@ -23,21 +23,29 @@ function PostsList(props) {
         setEnteredAuthor(event.target.value);
     }
 
-    let modalContent;
+    // let modalContent;
 
-    if (modalIsVisible) {
-        modalContent = <Modal onClose={hideModalHandler}>
-        <NewPost 
-            onAuthorChange={authorChangeHandler} 
-            onBodyChange={bodyChangeHandler}
-        />
-    </Modal> 
-    }
+    // if (modalIsVisible) {
+    //     modalContent = <Modal onClose={hideModalHandler}>
+    //     <NewPost 
+    //         onAuthorChange={authorChangeHandler} 
+    //         onBodyChange={bodyChangeHandler}
+    //     />
+    // </Modal> 
+    // }
 
 
     return (
         <>
-            {modalContent}
+            {modalIsVisible && (
+                <Modal onClose={hideModalHandler}>
+                    <NewPost 
+                        onAuthorChange={authorChangeHandler} 
+                        onBodyChange={bodyChangeHandler}
+                    />
+                </Modal> 
+            )}
+
             <ul className={classes.posts}>       
                 <Post author={enteredAuthor} body={enteredBody} />
                 <Post author='Max' body='test body' />
